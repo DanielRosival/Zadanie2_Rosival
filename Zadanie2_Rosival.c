@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <math.h>
+#include <stdlib.h>
 #define N 36
 
 void destroy_string(char *to_destroy){
@@ -21,28 +22,34 @@ void nahodny_rastuci_retazec(char *r, char l){
 		printf("%c ", aux_array[i+10]);
  	}
 
- 	r[l]
-
 }
 
 
 
 int main(int argc, char const *argv[]){
+	int aux;
 	char l;
 	char *r;
 
-	printf("Zadajte dlzku retazca,min. 1 a max. dlzka 35\n");
-	scanf("%c",&l);
+	printf("Zadajte dlzku retazca,min. 1 a max. dlzka 36\n");
+	
+	scanf("%d",&aux);
+	l=(char) aux;
 
-	while ((l<1)||(l>N))
+
+	while ((l < 1) || (l>36))
 	{
 		printf("Zadali ste nespravnu dlzku retazca, zadajte znova prosim.\n");
-		scanf("%c",&l);
+		scanf("%d",&aux);
+		l=(char) aux;
+
 	}
 
-	r=(char *) malloc(l);
+	printf("Dlzka retazca je: %d\n",l);
 
-	destroy_string(r);
+	// r=(char *) malloc(l);
+
+	// destroy_string(r);
 
 
 
