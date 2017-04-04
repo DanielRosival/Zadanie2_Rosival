@@ -1,4 +1,3 @@
 *.log
 Build
-testovanie_alokacie
-testovanie_alokacie.c
+/testovanie_alokacie.c
