@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 #define N 36
 
@@ -19,12 +20,10 @@
 //    printf("adresa vo funkcii %p\n",(void*)&r);
 // }
 
-void testpameti(char *pointer){
-	char l=10;
+void testpameti(char *pointer, char l){
 	for (int i = 0; i < l; i++)
     {
     	pointer[i]='A';
-    	printf("%c\n",pointer[i]);
     }
 	pointer[10]=0;
 
@@ -44,7 +43,12 @@ int main(int argc, char const *argv[]){
         return -1;
     }
 
-    testpameti(pointer);
+    testpameti(pointer,l);
+
+    for (int i = 0; i < l; i++)
+    {
+    	printf("%c\n",pointer[i]);
+    }
 
  //    for (int i = 0; i < l; i++)
  //    {
