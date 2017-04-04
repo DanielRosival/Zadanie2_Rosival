@@ -2,6 +2,7 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
+#include <ctype.h>
 
 #define N 36
 
@@ -14,7 +15,7 @@ int random_element(int dolna_hranica){
 
 void nahodny_rastuci_retazec(char *r, char l){
     int j = 0;
-    int i,aux;
+    int i,nahodny_element;
     char aux_array[N];
     
     for (i = '0'; i <= '9'; i++)
@@ -30,37 +31,37 @@ void nahodny_rastuci_retazec(char *r, char l){
         printf("%c ", aux_array[i+10]);
     }
     
-    //aux = random_element(0);
-    r[0] = aux_array[5];
+    nahodny_element = random_element(0);
+    r[0] = aux_array[nahodny_element];
     
-    // for (i = 1; i < l; i++)
-    // {
-    //     aux = random_element(aux);
-    //     r[i] = aux_array[aux];
-    // }
-    // r[i+1] = 0;
+    for (i = 1; i < l; i++)
+    {
+    	nahodny_element = random_element(nahodny_element);
+    	r[i] = aux_array[nahodny_element];
+    }
+    r[l+1] = 0;
 }
 
 
 
 int main(int argc, char const *argv[]){
-    int aux;
+    int aux,i;
     char l;
     char *pointer;
     
     printf("Zadajte dlzku retazca,min. 1\n");
     
     scanf("%d",&aux);
-    l=(char) aux;
-    
-    
-    while (l < 1)
-    {
-        printf("Zadali ste nespravnu dlzku retazca, zadajte znova prosim.\n");
-        scanf("%d",&aux);
-        l=(char) aux;
-    }
+    l = (char) aux;
     printf("Dlzka retazca je: %d\n",l);
+    
+    // while (l < 1)
+    // {
+    //     printf("Zadali ste nespravnu dlzku retazca, zadajte znova prosim.\n");
+    //     scanf("%d",&aux);
+    //     l=(char) aux;
+    // }
+    
     
 
     pointer = malloc((l+1) * sizeof(char));
@@ -68,19 +69,12 @@ int main(int argc, char const *argv[]){
         printf("FAILED\n");
         return -1;
     }
-    printf("%d\n",*(int*)pointer);
-    pointer[0]='A';
-    printf("%p\n",(void*)&pointer[0]);
-    pointer[1]='A';
-    printf("%p\n",(void*)&pointer[1]);
-    pointer[2]='A';
-    printf("%p\n",(void*)&pointer[2]);
 
 
 	nahodny_rastuci_retazec(pointer,l);
 
     
-    for (int i = 0; i < l; i++)
+    for (i = 0; i < l; i++)
     {
         printf("%c\n",pointer[i]);
     }
