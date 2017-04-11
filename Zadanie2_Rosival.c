@@ -17,13 +17,11 @@ void nahodny_rastuci_retazec(char *r, char l){
     for (i = '0'; i <= '9'; i++)
     {
         aux_array[j] = i;
-        printf("%c ", aux_array[j]);
         j++;
     }
     for (i = 'a'; i <= 'z'; i++)
     {
         aux_array[j] = i;
-        printf("%c ", aux_array[j]);
         j++;
     }
     
@@ -45,7 +43,7 @@ int main(int argc, char const *argv[]){
     char l;
     char *r;
     
-    l=10;
+    l=127;
     printf("Dlzka retazca je: %d\n",l);
    
     r = malloc((l+1) * sizeof(char));
@@ -57,16 +55,16 @@ int main(int argc, char const *argv[]){
 	srand (time(NULL));
 
 	nahodny_rastuci_retazec(r,l);
-
-	printf("\n\n");
     
+    printf("\n");
+
     for (i = 0; i < l; i++)
     {
         printf("%c ",r[i]);
         counter++;
     }
 
-    printf("\n%d\n",counter );
+    printf("\n%d\n",counter);
     
     free(r);
     return 0;    
