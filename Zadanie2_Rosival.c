@@ -2,15 +2,11 @@
 #include <math.h>
 #include <stdlib.h>
 #include <time.h>
-#include <ctype.h>
 
 #define N 36
 
-int random_element(int dolna_hranica){
-    
-    srand (time(NULL));
-    
-    return (rand() % (N + 1 - dolna_hranica) + dolna_hranica);
+int random_element(int dolna_hranica){    
+    return (rand() % (N - dolna_hranica) + dolna_hranica);
 }
 
 void nahodny_rastuci_retazec(char *r, char l){
@@ -21,14 +17,14 @@ void nahodny_rastuci_retazec(char *r, char l){
     for (i = '0'; i <= '9'; i++)
     {
         aux_array[j] = i;
-        j++;
         printf("%c ", aux_array[j]);
+        j++;
     }
     for (i = 'a'; i <= 'z'; i++)
     {
-        aux_array[j+10] = i;
+        aux_array[j] = i;
+        printf("%c ", aux_array[j]);
         j++;
-        printf("%c ", aux_array[i+10]);
     }
     
     nahodny_element = random_element(0);
@@ -45,40 +41,33 @@ void nahodny_rastuci_retazec(char *r, char l){
 
 
 int main(int argc, char const *argv[]){
-    int aux,i;
+    int i,counter=0;
     char l;
-    char *pointer;
+    char *r;
     
-    printf("Zadajte dlzku retazca,min. 1\n");
-    
-    scanf("%d",&aux);
-    l = (char) aux;
+    l=10;
     printf("Dlzka retazca je: %d\n",l);
-    
-    // while (l < 1)
-    // {
-    //     printf("Zadali ste nespravnu dlzku retazca, zadajte znova prosim.\n");
-    //     scanf("%d",&aux);
-    //     l=(char) aux;
-    // }
-    
-    
-
-    pointer = malloc((l+1) * sizeof(char));
-    if (pointer == NULL) {
+   
+    r = malloc((l+1) * sizeof(char));
+    if (r == NULL) {
         printf("FAILED\n");
-        return -1;
+        return 1;
     }
 
+	srand (time(NULL));
 
-	nahodny_rastuci_retazec(pointer,l);
+	nahodny_rastuci_retazec(r,l);
 
+	printf("\n\n");
     
     for (i = 0; i < l; i++)
     {
-        printf("%c\n",pointer[i]);
+        printf("%c ",r[i]);
+        counter++;
     }
+
+    printf("\n%d\n",counter );
     
-    free(pointer);
+    free(r);
     return 0;    
 }
