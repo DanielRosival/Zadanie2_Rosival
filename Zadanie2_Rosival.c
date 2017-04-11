@@ -36,8 +36,6 @@ void nahodny_rastuci_retazec(char *r, char l){
     r[l+1] = 0;
 }
 
-
-
 int main(int argc, char const *argv[]){
     int i,counter=0;
     char l;
